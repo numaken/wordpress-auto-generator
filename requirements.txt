@@ -1,0 +1,8 @@
+# WordPress記事自動生成システム 依存関係
+requests>=2.31.0
+python-dotenv>=1.0.0
+
+# オプション（開発時）
+pytest>=7.4.0
+black>=23.0.0
+flake8>=6.0.0

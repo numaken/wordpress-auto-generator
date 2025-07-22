@@ -1,0 +1,553 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WordPress記事自動生成システム - 月50記事を5分で生成</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Hiragino Kaku Gothic ProN', 'Hiragino Sans', Meiryo, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* ヘッダー */
+        .hero {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 60px 0;
+            text-align: center;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            font-weight: bold;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+        }
+
+        .hero .subtitle {
+            font-size: 1.5rem;
+            margin-bottom: 30px;
+            opacity: 0.9;
+        }
+
+        .hero .highlight {
+            background: linear-gradient(45deg, #f093fb 0%, #f5576c 100%);
+            color: white;
+            padding: 15px 30px;
+            border-radius: 50px;
+            display: inline-block;
+            font-size: 1.3rem;
+            font-weight: bold;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+        }
+
+        /* セクション共通 */
+        .section {
+            padding: 80px 0;
+            background: white;
+        }
+
+        .section:nth-child(even) {
+            background: #f8f9fa;
+        }
+
+        .section h2 {
+            font-size: 2.5rem;
+            text-align: center;
+            margin-bottom: 50px;
+            color: #2c3e50;
+        }
+
+        /* 問題提起セクション */
+        .problems {
+            background: #2c3e50;
+            color: white;
+        }
+
+        .problems h2 {
+            color: white;
+        }
+
+        .problem-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+
+        .problem-card {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 30px;
+            border-radius: 15px;
+            text-align: center;
+            backdrop-filter: blur(10px);
+        }
+
+        .problem-card .icon {
+            font-size: 3rem;
+            margin-bottom: 20px;
+        }
+
+        .problem-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+            color: #f39c12;
+        }
+
+        /* ソリューション */
+        .solution-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 40px;
+            margin-top: 50px;
+        }
+
+        .solution-card {
+            background: white;
+            padding: 40px;
+            border-radius: 20px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            transition: transform 0.3s ease;
+        }
+
+        .solution-card:hover {
+            transform: translateY(-10px);
+        }
+
+        .solution-card .icon {
+            font-size: 4rem;
+            margin-bottom: 25px;
+            background: linear-gradient(45deg, #667eea, #764ba2);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .solution-card h3 {
+            font-size: 1.8rem;
+            margin-bottom: 20px;
+            color: #2c3e50;
+        }
+
+        /* 価格表 */
+        .pricing {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+        }
+
+        .pricing h2 {
+            color: white;
+        }
+
+        .pricing-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 50px;
+        }
+
+        .pricing-card {
+            background: white;
+            color: #333;
+            padding: 40px;
+            border-radius: 20px;
+            text-align: center;
+            position: relative;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+        }
+
+        .pricing-card.popular {
+            transform: scale(1.05);
+            border: 3px solid #f39c12;
+        }
+
+        .pricing-card.popular::before {
+            content: "最人気";
+            position: absolute;
+            top: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: #f39c12;
+            color: white;
+            padding: 8px 20px;
+            border-radius: 20px;
+            font-weight: bold;
+        }
+
+        .pricing-card h3 {
+            font-size: 2rem;
+            margin-bottom: 20px;
+            color: #2c3e50;
+        }
+
+        .pricing-card .price {
+            font-size: 3rem;
+            font-weight: bold;
+            color: #e74c3c;
+            margin-bottom: 10px;
+        }
+
+        .pricing-card .period {
+            color: #7f8c8d;
+            margin-bottom: 30px;
+        }
+
+        .feature-list {
+            list-style: none;
+            margin-bottom: 30px;
+        }
+
+        .feature-list li {
+            padding: 8px 0;
+            border-bottom: 1px solid #ecf0f1;
+        }
+
+        .feature-list li:before {
+            content: "✅ ";
+            color: #27ae60;
+            font-weight: bold;
+        }
+
+        /* CTA ボタン */
+        .cta-button {
+            background: linear-gradient(45deg, #f093fb 0%, #f5576c 100%);
+            color: white;
+            padding: 15px 40px;
+            border: none;
+            border-radius: 50px;
+            font-size: 1.2rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+        }
+
+        .cta-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.3);
+        }
+
+        /* 実績・効果 */
+        .results-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            margin-top: 50px;
+        }
+
+        .result-card {
+            text-align: center;
+            padding: 30px;
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .result-card .number {
+            font-size: 4rem;
+            font-weight: bold;
+            color: #e74c3c;
+            margin-bottom: 10px;
+        }
+
+        .result-card .label {
+            font-size: 1.2rem;
+            color: #2c3e50;
+            font-weight: bold;
+        }
+
+        /* 保証セクション */
+        .guarantee {
+            background: #27ae60;
+            color: white;
+            text-align: center;
+        }
+
+        .guarantee h2 {
+            color: white;
+        }
+
+        .guarantee .icon {
+            font-size: 5rem;
+            margin-bottom: 30px;
+        }
+
+        /* 緊急性 */
+        .urgency {
+            background: #e74c3c;
+            color: white;
+            text-align: center;
+            padding: 40px 0;
+        }
+
+        .urgency .timer {
+            font-size: 2.5rem;
+            font-weight: bold;
+            margin: 20px 0;
+        }
+
+        /* レスポンシブ */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .hero .subtitle {
+                font-size: 1.2rem;
+            }
+
+            .section h2 {
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- ヒーローセクション -->
+    <section class="hero">
+        <div class="container">
+            <h1>技術記事を<br>「書く時代」は終わった</h1>
+            <p class="subtitle">業界初！6技術スタック対応の本格的WordPress記事自動生成システム</p>
+            <div class="highlight">
+                月50記事を5分で生成 - 品質は人間以上
+            </div>
+        </div>
+    </section>
+
+    <!-- 問題提起セクション -->
+    <section class="section problems">
+        <div class="container">
+            <h2>😰 こんな悩みありませんか？</h2>
+            <div class="problem-grid">
+                <div class="problem-card">
+                    <div class="icon">⏰</div>
+                    <h3>記事執筆に時間がかかりすぎる</h3>
+                    <p>1記事書くのに3-6時間。忙しくて継続投稿できない...</p>
+                </div>
+                <div class="problem-card">
+                    <div class="icon">💸</div>
+                    <h3>外注費が高額</h3>
+                    <p>技術記事の外注は1記事3,000円〜10,000円。月50記事なら50万円...</p>
+                </div>
+                <div class="problem-card">
+                    <div class="icon">📝</div>
+                    <h3>品質のバラつき</h3>
+                    <p>ライターによって品質が違う。専門性の高い記事が書けない...</p>
+                </div>
+                <div class="problem-card">
+                    <div class="icon">🔄</div>
+                    <h3>ネタ切れ・重複</h3>
+                    <p>既存記事と似た内容になってしまう。新しいトピックが思い浮かばない...</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ソリューション -->
+    <section class="section">
+        <div class="container">
+            <h2>🚀 すべての問題を解決します</h2>
+            <div class="solution-grid">
+                <div class="solution-card">
+                    <div class="icon">⚡</div>
+                    <h3>5分で記事完成</h3>
+                    <p>AIが自動で企画から執筆まで完了。あなたは確認するだけ。時間短縮率95%を実現。</p>
+                </div>
+                <div class="solution-card">
+                    <div class="icon">🛡️</div>
+                    <h3>重複回避AI搭載</h3>
+                    <p>業界初！既存記事との重複を自動検出・回避。常にオリジナルコンテンツを生成。</p>
+                </div>
+                <div class="solution-card">
+                    <div class="icon">🔧</div>
+                    <h3>6技術スタック対応</h3>
+                    <p>WordPress、JavaScript、Python、React、Vue.js、SQLの専門記事を自動生成。</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 実績・効果 -->
+    <section class="section">
+        <div class="container">
+            <h2>📊 驚異的な実績</h2>
+            <div class="results-grid">
+                <div class="result-card">
+                    <div class="number">98%</div>
+                    <div class="label">コスト削減</div>
+                </div>
+                <div class="result-card">
+                    <div class="number">10倍</div>
+                    <div class="label">投稿頻度向上</div>
+                </div>
+                <div class="result-card">
+                    <div class="number">5倍</div>
+                    <div class="label">サイト流入増加</div>
+                </div>
+                <div class="result-card">
+                    <div class="number">90%</div>
+                    <div class="label">運用工数削減</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 価格表 -->
+    <section class="section pricing">
+        <div class="container">
+            <h2>💎 選べる3つのプラン</h2>
+            <div class="pricing-grid">
+                <div class="pricing-card">
+                    <h3>エントリー版</h3>
+                    <div class="price">¥12,800</div>
+                    <div class="period">/ 月</div>
+                    <ul class="feature-list">
+                        <li>WordPress記事のみ</li>
+                        <li>月間50記事まで</li>
+                        <li>重複チェック機能</li>
+                        <li>7日間無料トライアル</li>
+                    </ul>
+                    <a href="#trial" class="cta-button">無料で試す</a>
+                </div>
+
+                <div class="pricing-card popular">
+                    <h3>スタンダード版</h3>
+                    <div class="price">¥24,800</div>
+                    <div class="period">/ 月</div>
+                    <ul class="feature-list">
+                        <li>6技術スタック対応</li>
+                        <li>月間200記事まで</li>
+                        <li>マルチ技術記事生成</li>
+                        <li>一括公開機能</li>
+                        <li>優先サポート</li>
+                    </ul>
+                    <a href="#trial" class="cta-button">今すぐ始める</a>
+                </div>
+
+                <div class="pricing-card">
+                    <h3>プロ版</h3>
+                    <div class="price">¥49,800</div>
+                    <div class="period">/ 月</div>
+                    <ul class="feature-list">
+                        <li>記事生成無制限</li>
+                        <li>全機能利用可能</li>
+                        <li>高度な管理ツール</li>
+                        <li>タグ管理機能</li>
+                        <li>専属サポート</li>
+                    </ul>
+                    <a href="#trial" class="cta-button">最高性能で開始</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 保証 -->
+    <section class="section guarantee">
+        <div class="container">
+            <div class="icon">🛡️</div>
+            <h2>安心の保証制度</h2>
+            <div
+                style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 40px; margin-top: 40px;">
+                <div>
+                    <h3 style="font-size: 1.5rem; margin-bottom: 15px;">7日間無料トライアル</h3>
+                    <p>すべての機能を制限なしでお試しいただけます</p>
+                </div>
+                <div>
+                    <h3 style="font-size: 1.5rem; margin-bottom: 15px;">30日間返金保証</h3>
+                    <p>満足いただけなければ全額返金いたします</p>
+                </div>
+                <div>
+                    <h3 style="font-size: 1.5rem; margin-bottom: 15px;">永続無料アップデート</h3>
+                    <p>新機能追加も追加料金なしで提供</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 緊急性 -->
+    <section class="urgency">
+        <div class="container">
+            <h2>⚡ 限定価格は今だけ</h2>
+            <div class="timer">残り時間: 23時間59分</div>
+            <p style="font-size: 1.2rem; margin-bottom: 30px;">
+                先着100名様限定！通常価格から30%OFF<br>
+                この機会を逃すと、次回いつ割引になるかわかりません
+            </p>
+            <a href="#trial" class="cta-button" style="font-size: 1.5rem; padding: 20px 50px;">
+                今すぐ無料で始める 🚀
+            </a>
+        </div>
+    </section>
+
+    <!-- 最終CTA -->
+    <section class="section" style="text-align: center; background: #2c3e50; color: white;">
+        <div class="container">
+            <h2 style="color: white;">記事執筆の革命を<br>今すぐ体験してください</h2>
+            <p style="font-size: 1.3rem; margin: 30px 0;">
+                もう記事執筆で悩む必要はありません<br>
+                あなたの時間を、本当に大切なことに使ってください
+            </p>
+            <a href="#trial" class="cta-button" style="font-size: 1.8rem; padding: 25px 60px; margin: 20px;">
+                7日間無料で体験する
+            </a>
+            <p style="margin-top: 20px; opacity: 0.8;">
+                ※クレジットカード登録不要　※いつでもキャンセル可能
+            </p>
+        </div>
+    </section>
+
+    <script>
+        // カウントダウンタイマー（デモ用）
+        function updateTimer() {
+            const timer = document.querySelector('.timer');
+            const now = new Date();
+            const tomorrow = new Date(now);
+            tomorrow.setDate(tomorrow.getDate() + 1);
+            tomorrow.setHours(0, 0, 0, 0);
+
+            const diff = tomorrow - now;
+            const hours = Math.floor(diff / (1000 * 60 * 60));
+            const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((diff % (1000 * 60)) / 1000);
+
+            timer.textContent = `残り時間: ${hours}時間${minutes}分${seconds}秒`;
+        }
+
+        setInterval(updateTimer, 1000);
+        updateTimer();
+
+        // スムーススクロール
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+
+</html>

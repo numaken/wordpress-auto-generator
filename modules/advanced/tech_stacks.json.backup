@@ -1,0 +1,215 @@
+{
+    "wordpress": {
+        "name": "WordPress開発",
+        "description": "WordPressのPHP開発、フック、REST APIなど",
+        "category_id": 2,
+        "tags": [
+            "WordPress",
+            "PHP",
+            "CMS"
+        ],
+        "code_language": "php",
+        "system_prompt": "あなたはWordPressエンジニア向けの実務ナレッジ記事作成アシスタントです。",
+        "article_format": {
+            "sections": [
+                "概要",
+                "サンプルコード",
+                "解説",
+                "ベストプラクティス"
+            ],
+            "code_block_prefix": "```php",
+            "max_tokens": 2000
+        },
+        "topic_generation_prompt": "WordPressエンジニア向けの実用的なコードスニペットトピック",
+        "sample_topics": [
+            "get_posts() でカスタム投稿を取得する方法",
+            "WP REST API から特定ユーザーの投稿をフェッチする",
+            "add_shortcode() でオリジナルショートコードを作成する"
+        ]
+    },
+    "javascript": {
+        "name": "JavaScript開発",
+        "description": "JavaScript、TypeScript、Node.js、React、Vue.jsなど",
+        "category_id": 6,
+        "tags": [
+            "JavaScript",
+            "TypeScript",
+            "Web開発"
+        ],
+        "code_language": "javascript",
+        "system_prompt": "あなたはJavaScript/TypeScript/Node.js エンジニア向けの技術記事作成アシスタントです。",
+        "article_format": {
+            "sections": [
+                "概要",
+                "サンプルコード",
+                "解説",
+                "応用例・バリエーション",
+                "ベストプラクティス",
+                "関連技術・参考情報"
+            ],
+            "code_block_prefix": "```javascript",
+            "max_tokens": 2500
+        },
+        "topic_generation_prompt": "JavaScript/TypeScript エンジニア向けの実践的なコードスニペット",
+        "sample_topics": [
+            "async/await を使った非同期処理のベストプラクティス",
+            "React Hooks useEffect の正しい使い方と依存配列",
+            "TypeScript の型定義でAPIレスポンスを安全に扱う方法"
+        ]
+    },
+    "python": {
+        "name": "Python開発",
+        "description": "Python、Django、FastAPI、データサイエンス、機械学習",
+        "category_id": 7,
+        "tags": [
+            "Python",
+            "Django",
+            "FastAPI",
+            "データサイエンス"
+        ],
+        "code_language": "python",
+        "system_prompt": "あなたはPython エンジニア向けの技術記事作成アシスタントです。Django、FastAPI、データサイエンス分野の知識を活用してください。",
+        "article_format": {
+            "sections": [
+                "概要",
+                "環境構築",
+                "実装コード",
+                "使用例",
+                "テストコード",
+                "応用・カスタマイズ"
+            ],
+            "code_block_prefix": "```python",
+            "max_tokens": 3000
+        },
+        "topic_generation_prompt": "Python エンジニア向けの実践的なコードスニペットとライブラリ活用法",
+        "sample_topics": [
+            "FastAPI でREST APIを構築する基本パターン",
+            "Pandas で大量データを効率的に処理する方法",
+            "Django ORM でN+1問題を回避するクエリ最適化"
+        ]
+    },
+    "react": {
+        "name": "React開発",
+        "description": "React、Next.js、TypeScript、状態管理、パフォーマンス最適化",
+        "category_id": 8,
+        "tags": [
+            "React",
+            "Next.js",
+            "TypeScript",
+            "フロントエンド"
+        ],
+        "code_language": "jsx",
+        "system_prompt": "あなたはReact/Next.js エンジニア向けの技術記事作成アシスタントです。最新のReact機能とベストプラクティスに基づいてください。",
+        "article_format": {
+            "sections": [
+                "概要",
+                "基本実装",
+                "TypeScript型定義",
+                "テストコード",
+                "パフォーマンス最適化",
+                "実践的な応用例"
+            ],
+            "code_block_prefix": "```jsx",
+            "max_tokens": 2800
+        },
+        "topic_generation_prompt": "React/Next.js エンジニア向けの実践的なコンポーネント設計とパフォーマンス最適化",
+        "sample_topics": [
+            "React Server Components の基本概念と使い方",
+            "useContext と useReducer でグローバル状態管理",
+            "React.memo と useMemo でパフォーマンス最適化"
+        ]
+    },
+    "vue": {
+        "name": "Vue.js開発",
+        "description": "Vue.js、Nuxt.js、Composition API、Pinia状態管理",
+        "category_id": 9,
+        "tags": [
+            "Vue.js",
+            "Nuxt.js",
+            "フロントエンド"
+        ],
+        "code_language": "vue",
+        "system_prompt": "あなたはVue.js/Nuxt.js エンジニア向けの技術記事作成アシスタントです。Vue 3 Composition APIとNuxt 3の最新機能を活用してください。",
+        "article_format": {
+            "sections": [
+                "概要",
+                "基本実装",
+                "Composition API活用",
+                "テンプレート構文",
+                "状態管理",
+                "実践例"
+            ],
+            "code_block_prefix": "```vue",
+            "max_tokens": 2600
+        },
+        "topic_generation_prompt": "Vue.js/Nuxt.js エンジニア向けの実践的なコンポーネント開発とComposition API活用",
+        "sample_topics": [
+            "Vue 3 Composition API でカスタムフックを作成する方法",
+            "Pinia で型安全な状態管理を実装する",
+            "Nuxt 3 でSSR・SSGの使い分けとパフォーマンス最適化"
+        ]
+    },
+    "nodejs": {
+        "name": "Node.js開発",
+        "description": "Node.js、Express、NestJS、GraphQL、API開発",
+        "category_id": 10,
+        "tags": [
+            "Node.js",
+            "Express",
+            "NestJS",
+            "バックエンド"
+        ],
+        "code_language": "javascript",
+        "system_prompt": "あなたはNode.js バックエンドエンジニア向けの技術記事作成アシスタントです。Express、NestJS、GraphQLなどの知識を活用してください。",
+        "article_format": {
+            "sections": [
+                "概要",
+                "環境設定",
+                "実装コード",
+                "ミドルウェア",
+                "エラーハンドリング",
+                "テスト",
+                "デプロイメント"
+            ],
+            "code_block_prefix": "```javascript",
+            "max_tokens": 3200
+        },
+        "topic_generation_prompt": "Node.js バックエンドエンジニア向けの実践的なAPI開発とサーバーサイド処理",
+        "sample_topics": [
+            "Express.js でJWT認証ミドルウェアを実装する方法",
+            "NestJS でGraphQL APIを構築するベストプラクティス",
+            "Node.js ストリーミングで大容量ファイルを効率的に処理"
+        ]
+    },
+    "flutter": {
+        "name": "Flutter開発",
+        "description": "Flutter、Dart、モバイルアプリ開発、状態管理",
+        "category_id": 11,
+        "tags": [
+            "Flutter",
+            "Dart",
+            "モバイル開発"
+        ],
+        "code_language": "dart",
+        "system_prompt": "あなたはFlutter/Dart モバイルアプリエンジニア向けの技術記事作成アシスタントです。",
+        "article_format": {
+            "sections": [
+                "概要",
+                "実装コード",
+                "UI/UX設計",
+                "状態管理",
+                "パフォーマンス",
+                "テスト",
+                "プラットフォーム固有実装"
+            ],
+            "code_block_prefix": "```dart",
+            "max_tokens": 2800
+        },
+        "topic_generation_prompt": "Flutter/Dart モバイルアプリエンジニア向けの実践的なウィジェット作成とアプリ設計",
+        "sample_topics": [
+            "Flutter BLoC パターンで状態管理を実装する方法",
+            "カスタムアニメーションウィジェットの作成とパフォーマンス最適化",
+            "Flutter でネイティブ機能を呼び出すプラットフォームチャネル"
+        ]
+    }
+}

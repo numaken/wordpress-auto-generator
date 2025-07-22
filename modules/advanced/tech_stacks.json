@@ -1,0 +1,220 @@
+{
+    "wordpress": {
+        "name": "WordPress開発",
+        "description": "WordPressのPHP開発、フック、REST APIなど",
+        "category_id": 2,
+        "tags": [
+            "WordPress",
+            "PHP",
+            "CMS"
+        ],
+        "code_language": "php",
+        "system_prompt": "あなたはWordPress開発を学ぶ初心者から中級者に向けて、分かりやすく実践的な技術記事を作成してください。専門用語は必ず説明を加え、「なぜそうするのか」「どんな時に使うのか」を丁寧に解説してください。コードは動作確認済みで、初心者でも安全に実装できるよう、手順を段階的に説明し、よくあるエラーと対処法も含めてください。WordPress開発の楽しさと実用性を伝え、着実にスキルアップできる内容を心がけてください。",
+        "article_format": {
+            "sections": [
+                "この記事で学べること・完成イメージ",
+                "必要な前提知識・環境準備",
+                "基本的な実装手順（コメント豊富）",
+                "コードの詳しい解説・ポイント",
+                "実際に動作確認してみよう",
+                "よくあるエラーと解決方法",
+                "応用例・カスタマイズのヒント",
+                "まとめ・次のステップ"
+            ],
+            "code_block_prefix": "```php",
+            "max_tokens": 2500
+        },
+        "topic_generation_prompt": "WordPress開発を始めたばかりの人や、基本を確実に身につけたい人向けの実践的なコードスニペット。実際のサイト制作で「これができたら便利！」と感じる機能",
+        "target_readers": "WordPress開発を始めたい方、テーマカスタマイズを学びたい方、プラグイン開発に挑戦したい方",
+        "sample_topics": [
+            "はじめてのget_posts()：カスタム投稿を表示する基本の方法",
+            "WordPress REST APIって何？簡単な投稿取得から始めよう",
+            "オリジナルショートコードを作ってみよう：add_shortcode()の使い方",
+            "WordPressでJavaScriptファイルを正しく読み込む方法",
+            "カスタムフィールドを使って記事に追加情報を表示する方法"
+        ]
+    },
+    "javascript": {
+        "name": "JavaScript開発",
+        "description": "JavaScript、TypeScript、Node.js、フロントエンド開発",
+        "category_id": 6,
+        "tags": [
+            "JavaScript",
+            "TypeScript",
+            "Web開発"
+        ],
+        "code_language": "javascript",
+        "system_prompt": "あなたはJavaScript開発を学ぶ初心者から中級者に向けて、基礎からしっかり理解できる技術記事を作成してください。JavaScript特有の概念（非同期処理、スコープ、イベントなど）は丁寧に説明し、実際のWeb開発でよく使われるパターンを中心に、動作するサンプルコードと詳しい解説を提供してください。ブラウザでの動作確認方法も含め、初心者が躓きやすいポイントを予め説明し、楽しくJavaScriptを学べる内容にしてください。",
+        "article_format": {
+            "sections": [
+                "この記事で作るもの・学べること",
+                "事前に知っておきたい基本知識",
+                "HTML準備・環境セットアップ",
+                "JavaScript実装（ステップバイステップ）",
+                "コードの動作原理・重要ポイント解説",
+                "ブラウザで動作確認・デバッグ方法",
+                "よくある間違い・エラーパターン",
+                "少し応用：機能拡張のアイデア",
+                "まとめ・関連技術への発展"
+            ],
+            "code_block_prefix": "```javascript",
+            "max_tokens": 2800
+        },
+        "topic_generation_prompt": "JavaScript学習者が「これができるようになりたい！」と思う実用的な機能。基本文法から一歩進んだ、実際のWebサイトで使える楽しい機能",
+        "target_readers": "Web開発を始めたい方、フロントエンド開発者を目指す方、JavaScript基礎を固めたい方",
+        "sample_topics": [
+            "はじめての非同期処理：async/awaitで分かりやすくAPI呼び出し",
+            "初心者向けDOM操作：ボタンクリックで要素を動的に変更する方法",
+            "JavaScriptでフォームバリデーション：リアルタイムチェック機能",
+            "配列メソッドmap()とfilter()：データ処理の基本をマスター",
+            "イベントリスナーの使い方：クリック・キーボード・マウス操作"
+        ]
+    },
+    "python": {
+        "name": "Python開発",
+        "description": "Python、Django、FastAPI、データサイエンス、自動化",
+        "category_id": 7,
+        "tags": [
+            "Python",
+            "Django",
+            "FastAPI",
+            "データサイエンス"
+        ],
+        "code_language": "python",
+        "system_prompt": "あなたはPython開発を学ぶ初心者から中級者に向けて、基礎をしっかり固めながら実用的なスキルを身につけられる技術記事を作成してください。Pythonの「読みやすく書きやすい」特徴を活かし、コードの意図が明確に伝わるよう、変数名や関数名も分かりやすくしてください。環境構築から実行まで、初心者でも迷わずに進められる手順を提供し、Pythonでできることの楽しさと実用性を伝える内容にしてください。",
+        "article_format": {
+            "sections": [
+                "この記事で作るもの・身につくスキル",
+                "必要な環境・ライブラリのインストール",
+                "基本となる概念・用語の説明",
+                "実装手順（コメント付きコード）",
+                "コードの詳細解説・なぜこう書くのか",
+                "実際に動かしてみよう・結果確認",
+                "エラーが出た時の対処法",
+                "機能を少し拡張してみよう",
+                "まとめ・次に学ぶべきこと"
+            ],
+            "code_block_prefix": "```python",
+            "max_tokens": 2800
+        },
+        "topic_generation_prompt": "Python学習者が「これは便利！」「仕事で使えそう！」と感じる実践的なコード例。基本文法を覚えた後に挑戦したくなる、やりがいのある機能",
+        "target_readers": "プログラミング初心者、業務自動化に興味がある方、データ分析を始めたい方、Web開発を学びたい方",
+        "sample_topics": [
+            "Pythonでファイル操作入門：CSVデータを読み込んで集計する",
+            "はじめてのAPI呼び出し：requestsライブラリで天気情報取得",
+            "Pythonで自動化：フォルダ内のファイルを整理するスクリプト",
+            "データ分析の第一歩：pandasでExcelファイルを読み込み・加工",
+            "簡単なWebアプリ作成：Flaskで「Hello World」から始めよう"
+        ]
+    },
+    "react": {
+        "name": "React開発",
+        "description": "React、Next.js、コンポーネント開発、SPA作成",
+        "category_id": 8,
+        "tags": [
+            "React",
+            "Next.js",
+            "TypeScript",
+            "フロントエンド"
+        ],
+        "code_language": "jsx",
+        "system_prompt": "あなたはReact開発を学ぶ初心者から中級者に向けて、基本概念から実用的な応用まで段階的に学べる技術記事を作成してください。Reactの「コンポーネント思考」や「状態管理」といった概念は具体例とともに分かりやすく説明し、実際に動くアプリを作りながら学習できる構成にしてください。JavaScriptの基本は理解している前提で、React特有の考え方や書き方に焦点を当て、コンポーネント化の恩恵を実感できる内容にしてください。",
+        "article_format": {
+            "sections": [
+                "今回作るアプリの完成イメージ・学習目標",
+                "必要な前提知識・環境セットアップ",
+                "プロジェクト作成・基本構造の理解",
+                "コンポーネント作成（段階的に機能追加）",
+                "Reactの重要概念解説（state、propsなど）",
+                "ブラウザで動作確認・開発者ツール活用",
+                "よくあるエラー・つまずきポイントと解決法",
+                "機能拡張・カスタマイズのヒント",
+                "まとめ・Next.jsや状態管理への発展"
+            ],
+            "code_block_prefix": "```jsx",
+            "max_tokens": 3000
+        },
+        "topic_generation_prompt": "JavaScript中級者がReactを学ぶ時に「これができるようになりたい！」と思う実用的なコンポーネントやアプリ。jQueryとは違うコンポーネント思考の恩恵を実感できる内容",
+        "target_readers": "JavaScript中級者でReactを学びたい方、jQueryからステップアップしたい方、コンポーネント思考を身につけたい方、SPAアプリを作ってみたい方",
+        "sample_topics": [
+            "jQueryからReactへ：ToDoリストで学ぶコンポーネント思考の違い",
+            "はじめてのReactアプリ：useStateでカウンターアプリ作成",
+            "コンポーネント間でデータを渡そう：propsの使い方実践",
+            "React Hooks の基本：useEffectでAPIからデータを取得",
+            "フォーム作成で学ぶReact：useState + onChangeの連携パターン"
+        ]
+    },
+    "vue": {
+        "name": "Vue.js開発",
+        "description": "Vue.js、Nuxt.js、テンプレート開発、フレームワーク入門",
+        "category_id": 9,
+        "tags": [
+            "Vue.js",
+            "Nuxt.js",
+            "フロントエンド"
+        ],
+        "code_language": "vue",
+        "system_prompt": "あなたはVue.js開発を学ぶ初心者から中級者に向けて、Vue.jsの「習得しやすさ」を活かした分かりやすい技術記事を作成してください。Vue.jsの直感的なテンプレート記法や、段階的に学習できる設計を重視し、HTMLとJavaScriptの基本知識がある方が無理なくステップアップできる内容にしてください。CDNから始める簡単な例から、Vue CLIやViteを使った本格的な開発まで、学習者のレベルに応じて段階的に進められる構成にしてください。",
+        "article_format": {
+            "sections": [
+                "作成するアプリの完成形・習得できるスキル",
+                "事前準備・必要な知識の確認",
+                "環境構築・プロジェクト作成（図解付き）",
+                "基本的なVueアプリ作成（テンプレート→スクリプト）",
+                "Vue.jsの重要機能解説（データバインディング等）",
+                "ブラウザで動作確認・Vue DevTools活用",
+                "つまずきやすいポイント・エラー対処法",
+                "機能追加・見た目改善のアイデア",
+                "次のステップ・Composition APIやNuxt.jsへの道"
+            ],
+            "code_block_prefix": "```vue",
+            "max_tokens": 2800
+        },
+        "topic_generation_prompt": "HTML/CSS/JavaScript経験者がVue.jsを学ぶ時に「これなら分かりやすい！」「自分でも作れそう！」と感じる親しみやすく実用的なアプリやコンポーネント。HTMLの延長として自然に学べる内容",
+        "target_readers": "HTML/CSS/JavaScript基本経験者でフレームワークに挑戦したい方、jQueryから移行したい方、習得しやすいフレームワークを探している方",
+        "sample_topics": [
+            "Vue.js入門：HTMLからの自然なステップアップでデータバインディング",
+            "はじめてのVueコンポーネント：再利用可能なボタンコンポーネント",
+            "Vue.jsでリスト表示：v-forディレクティブの使い方マスター",
+            "条件分岐でUI変更：v-ifとv-showを使い分けよう",
+            "Vueでフォーム作成：v-modelで双方向データバインディング体験"
+        ]
+    },
+    "sql": {
+        "name": "SQL・データベース",
+        "description": "MySQL、SQL文、データベース設計、phpMyAdmin",
+        "category_id": 34,
+        "tags": [
+            "SQL",
+            "MySQL",
+            "データベース",
+            "phpMyAdmin"
+        ],
+        "code_language": "sql",
+        "system_prompt": "あなたはSQL・データベースを学ぶ初心者から中級者に向けて、実務で役立つデータベース操作技術を分かりやすく解説する記事を作成してください。データベースの基本概念から始まり、WordPressでよく使われるMySQL操作、phpMyAdminの使い方、効率的なSQL文の書き方まで、実際のWebサイト運営で必要となるスキルを段階的に学べる構成にしてください。データの安全性を重視し、バックアップの重要性も含めて解説してください。",
+        "article_format": {
+            "sections": [
+                "この記事で学べるSQL技術・活用場面",
+                "データベースの基本概念・MySQL環境確認",
+                "phpMyAdminでの基本操作・画面の見方",
+                "SQL文の基本（SELECT、INSERT、UPDATE、DELETE）",
+                "実践的なクエリ例・WordPressテーブル操作",
+                "よくあるエラーと対処法・安全な操作のコツ",
+                "パフォーマンス改善・インデックス活用",
+                "バックアップとセキュリティ対策",
+                "まとめ・より高度なSQL技術への道"
+            ],
+            "code_block_prefix": "```sql",
+            "max_tokens": 2600
+        },
+        "topic_generation_prompt": "WordPress運営者やWeb開発者が実際に遭遇するデータベース操作の課題。日常的なサイト運営やデータ分析で役立つ実践的なSQL技術",
+        "target_readers": "WordPress運営者、Web開発初心者、データ分析に興味がある方、サイト管理者",
+        "sample_topics": [
+            "WordPressのデータベース構造を理解してSQLで投稿データを取得",
+            "phpMyAdminでWordPressサイトのバックアップと復元",
+            "SQLでWordPressのユーザー権限や投稿数を効率的に集計",
+            "データベースの重複データを見つけて整理するSQL文",
+            "WordPressサイトの引っ越し時に必要なSQL操作手順"
+        ]
+    }
+}
